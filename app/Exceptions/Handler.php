@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use App\Core\Auth\Exceptions\InvalidTokenException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -35,7 +36,8 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+            if($e instanceof InvalidTokenException)
+                return response(['status' => 'error'], 401);
         });
     }
 }
