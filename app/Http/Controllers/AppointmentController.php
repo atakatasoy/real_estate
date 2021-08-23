@@ -58,7 +58,7 @@ class AppointmentController extends Controller
     public function update(Request $request, AppointmentManager $manager)
     {
         $input = $request->validate([
-            'appointment_id' => 'required|exist:appointments,id',
+            'appointment_id' => 'required|exists:appointments,id',
             'reserved_at' => 'string'
         ]);
 
