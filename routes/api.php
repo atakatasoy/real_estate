@@ -3,6 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\AuthController;
+
+use App\Http\Middleware\JWTAuthenticate;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +19,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::middleware([JWTAuthenticate::class])->group(function() {
+    Route::group(['prefix' => 'appointment'], function() {
+        Route::get('/create', [AppointmentController::class, 'create']);
+        Route::post('/update', [AppointmentController::class, 'update']);
+        Route::get( '/remove', [AppointmentController::class, 'remove']);
+    });
 });
