@@ -24,7 +24,7 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::middleware([JWTAuthenticate::class])->group(function() {
     Route::group(['prefix' => 'appointment'], function() {
-        Route::get('/create', [AppointmentController::class, 'create']);
+        Route::post('/create', [AppointmentController::class, 'create']);
         Route::post('/update', [AppointmentController::class, 'update']);
         Route::get( '/remove', [AppointmentController::class, 'remove']);
     });
