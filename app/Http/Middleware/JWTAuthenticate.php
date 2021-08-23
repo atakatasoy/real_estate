@@ -23,7 +23,7 @@ class JWTAuthenticate
         try{
             $user = app()->make(TokenHandler::class)->attemptToLogin();
         }catch(UnauthenticatedUserException $e){
-            //BTW this should be a view not a POST endpoint
+            //Redirect to login view
             return redirect('/');
         }
         
