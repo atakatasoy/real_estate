@@ -1,3 +1,12 @@
+1)Composer install
+2)Run the command "php artisan configurate:jwt"
+3)Setup a Redis on port number 6379
+4)Fill in the extra parameters in .env.example file (Like your own GOOGLE_API_KEY etc.)
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
