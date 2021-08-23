@@ -81,9 +81,9 @@ class TokenHandler {
         }
 
         $invalid =  !isset($payload->iss) || $payload->iss != $this->issuer;
-        // $invalid &= !isset($payload->iat) || $payload->iat > time();
-        // $invalid &= !isset($payload->exp) || $payload->exp < time();
-        $invalid &= !isset($payload->sub);
+        // $invalid |= !isset($payload->iat) || $payload->iat > time();
+        // $invalid |= !isset($payload->exp) || $payload->exp < time();
+        $invalid |= !isset($payload->sub);
 
         if($invalid) throw new InvalidTokenException();
 
