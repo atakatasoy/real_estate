@@ -120,7 +120,6 @@ class AppointmentManager {
     {
         [$distance, $duration] = $this->calculate($postalCode);
 
-        
         $departure = $this->getDeparture($date, $duration);
         $checkDeparture = ($bookings ?? $this->bookings)->every(
             fn($dates, $appointmentId) => !($departure >= $dates[0] && $departure <= $dates[1])
@@ -188,8 +187,7 @@ class AppointmentManager {
         $appointment->completed = true;
         $appointment->save();
 
-        unset($this->bookings[$appointment->id]);
-        Cache::put("bookings.{$this->user->id}", $this->bookings);
+        Cache::put("bookings.{$this->user->id}", $this->bookings->forget($appointment->id));
     }
 
     public function setAppointment(Appointment $appointment)
