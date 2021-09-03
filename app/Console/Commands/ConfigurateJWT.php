@@ -35,8 +35,7 @@ class ConfigurateJWT extends Command
     {
         parent::__construct();
 
-        // $this->path = base_path('.env');
-        $this->path = '/.env';
+        $this->path = base_path('.env');
     }
 
     /**
