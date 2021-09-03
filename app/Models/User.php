@@ -38,7 +38,7 @@ class User extends Authenticatable
 
     public function getBookings()
     {
-        $dates = Cache::get("bookings.{$this->id}") ?? [];
+        $dates = collect(Cache::get("bookings.{$this->id}") ?: []);
         if(empty($dates)){
             $existingOnes = Appointment::where('user_id', $this->id)
                 ->where('completed', 0)
@@ -54,6 +54,6 @@ class User extends Authenticatable
             }
         }
 
-        return collect($dates);
+        return $dates;
     }
 }
