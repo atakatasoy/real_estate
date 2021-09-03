@@ -50,7 +50,7 @@ class User extends Authenticatable
                     fn($appointment) => [$appointment->id => [$appointment->departure, $appointment->arrival_back]]
                 );
 
-                Cache::put("bookings.{$this->id}", $dates);
+                Cache::put("bookings.{$this->id}", $dates->toArray());
             }
         }
 

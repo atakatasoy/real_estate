@@ -24,7 +24,10 @@ class JWTAuthenticate
             $user = app()->make(TokenHandler::class)->attemptToLogin();
         }catch(UnauthenticatedUserException $e){
             //Redirect to login view
-            return redirect('/');
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Unauthenticated'
+            ], 401);
         }
         
         $request->attributes->add(['user' => $user]);
