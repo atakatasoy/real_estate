@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 use App\Core\Appointment\AppointmentManager;
 use App\Core\Auth\TokenHandler;
@@ -41,5 +42,7 @@ class AppServiceProvider extends ServiceProvider
 
             return new AppointmentManager($user, env('POSTAL_CODE'));
         });
+
+        Schema::defaultStringLength(191);
     }
 }
