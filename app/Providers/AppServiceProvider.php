@@ -43,6 +43,6 @@ class AppServiceProvider extends ServiceProvider
             return new AppointmentManager($user, env('POSTAL_CODE'));
         });
 
-        Schema::defaultStringLength(191);
+        Schema::defaultStringLength(255);
     }
 }
