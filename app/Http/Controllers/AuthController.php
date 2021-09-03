@@ -54,6 +54,6 @@ class AuthController extends Controller
 
     public function test(Request $request)
     {
-        return 'ok';
+        return base_path();
     }
 }

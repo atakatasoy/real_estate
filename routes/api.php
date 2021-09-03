@@ -21,6 +21,7 @@ use App\Http\Middleware\JWTAuthenticate;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+Route::get( '/test', [AuthController::class, 'test']);
 
 Route::middleware([JWTAuthenticate::class])->group(function() {
     Route::group(['prefix' => 'appointment'], function() {
