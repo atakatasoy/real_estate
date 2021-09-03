@@ -221,7 +221,8 @@ class AppointmentManager {
         $appointment->save();
 
         $this->bookings[$appointment->id] = [
-            $appointment->departure, $appointment->arrival_back
+            $appointment->departure, 
+            $appointment->arrival_back
         ];
 
         Cache::put("bookings.{$this->user->id}", $this->bookings);

@@ -43,6 +43,7 @@ class Kernel extends HttpKernel
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\ForceJsonResponse::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
         ],
     ];
@@ -65,5 +66,17 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'jwt_auth' => \App\Http\Middleware\JWTAuthenticate::class,
+    ];
+
+    /**
+     * The priority-sorted list of middleware.
+     *
+     * This forces non-global middleware to always be in the given order.
+     *
+     * @var array
+     */
+    protected $middlewarePriority = [
+        \App\Http\Middleware\ForceJsonResponse::class,
+        \App\Http\Middleware\Authenticate::class,
     ];
 }
