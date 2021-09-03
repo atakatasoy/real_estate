@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use \Firebase\JWT\JWT;
@@ -54,6 +55,6 @@ class AuthController extends Controller
 
     public function test(Request $request)
     {
-        return base_path();
+        return Cache::get('bookings.' . User::first()->id);
     }
 }
