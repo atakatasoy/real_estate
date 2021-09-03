@@ -36,6 +36,10 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
+
+        });                
+
+        $this->renderable(function(Throwable $e, $request){
             if($e instanceof InvalidTokenException)
                 return response(['status' => 'error'], 401);
         });
