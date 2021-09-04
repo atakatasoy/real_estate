@@ -52,7 +52,7 @@ class ConfigurateJWT extends Command
             $envFile .= "\r\nJWT_SECRET={$key}";
             $envFile .= "\r\nJWT_EXPIRY_IN_SECONDS=3600";
         }else{
-            str_replace($this->path, "\r\nJWT_SECRET=$key", $envFile);
+            $endFile = str_replace("JWT_SECRET=".env('JWT_SECRET'), "JWT_SECRET=$key", $envFile);
         }
 
         return file_put_contents($this->path, $envFile);
